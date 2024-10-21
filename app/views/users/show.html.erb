@@ -1,3 +1,8 @@
 <%=@user.name %>
 <%=@user.introduction %>
 <%=image_tag @user.get_profile_image(50,50) %>
+<% @posts.each do |post| %>
+<%=post.name %>
+<%=post.caption %>
+<%=image_tag post.get_image(50,50) %>
+<% end %>

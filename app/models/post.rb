@@ -2,8 +2,8 @@ class Post < ApplicationRecord
 
   belongs_to :user
 
-  validates :name,presence:true
-  validates :caption,presence:true,length:{maximum:30}
+  validates :name,presence: true
+  validates :caption,presence: true,length: {maximum: 30}
 
   has_one_attached:image
 

@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 
   def create
     @post=Post.new(post_params)
-    @post.user_id==current_user.id
+    @post.user_id=current_user.id
     @post.save
     redirect_to post_path(@post)
   end
@@ -42,7 +42,7 @@ class PostsController < ApplicationController
    end
 
 
-def is_mataching_login_user
+def is_matching_login_user
   post=Post.find(params[:id])
   unless post.user_id=current_user.id
     redirect_to user_path(post.user.id)

@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
    has_many :posts,dependent: :destroy
 
-   validates :name,presence:true
+   validates :name,presence: true
 
    has_one_attached:profile_image
 
