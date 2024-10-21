@@ -1,5 +1,19 @@
-<% @posts.each do |post| %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table table-border-bottom">
+<tr>
+  <th>dish</th>
+  <th>caption</th>
+  <th>image</th>
+</tr>
+<tr><% @posts.each do |post| %>
 <%=post.name %>
 <%=post.caption %>
 <%=image_tag post.get_image(50,50) %>
 <% end %>
+</table>
+<
+</div>
+</div>
+</div>
