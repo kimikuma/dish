@@ -1,5 +1,20 @@
+<div class="container mt-3">
+<div class="row">
+<div class="col-md-4">
+<table class="table table-border-bottom">
+<tr>
+  <th><i class="fa-solid fa-signature"></i></th>
+  <th><i class="fa-solid fa-indent"></i></th>
+  <th><i class="fa-solid fa-image-portrait"></i></th>
+</tr>
 <% @users.each do |user| %>
-<%=user.name %>
-<%=user.introduction %>
-<%=image_tag user.get_profile_image(50,50) %>
+<tr>
+<td><%=link_to user.name,user_path(user),class: "stretched-link" %></td>
+<td><%=user.introduction %></td>
+<td><%=image_tag user.get_profile_image(50,50) %></td>
+</tr>
 <% end %>
+</table>
+</div>
+</div>
+</div>

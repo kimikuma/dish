@@ -1,0 +1,9 @@
+<% if current_user.following?(user) %>
+<%=link_to user_relationships_path(user),method: :delete,class: "btn btn-secondary",remote: true do %>
+<i class="fa-solid fa-user-large-slash"></i>
+<% end %>
+<% else %>
+<%=link_to user_relationships_path(user),method: :post,class: "btn btn-secondary",remote: true do %>
+<i class="fa-solid fa-user-plus"></i>
+<% end %>
+<% end %>

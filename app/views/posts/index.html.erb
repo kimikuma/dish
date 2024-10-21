@@ -1,19 +1,26 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
-      <table class="table table-border-bottom">
+    <div class="col-md-7">
+
+<table class="table table-border-bottom mt-3">
 <tr>
-  <th>dish</th>
-  <th>caption</th>
-  <th>image</th>
+  <th class="mx-3">dish</th>
+  <th class="mx-3">caption</th>
+  <th class="mx-3">image</th>
 </tr>
 <tr><% @posts.each do |post| %>
-<%=post.name %>
-<%=post.caption %>
-<%=image_tag post.get_image(50,50) %>
+<td class="mx-3"><%=link_to post.name,post_path(post)%></td>
+<td class="mx-3"><%=post.caption %></td>
+<td class="mx-3"><%=image_tag post.get_image(50,50) %>
+<p id="favorite<%=post.id %>"><%=render "favorites/favorite",post: post %></p></td>
+
+</tr>
 <% end %>
 </table>
-<
+</div>
+
+<div class="col-md-4 offset-md-1">
+  <%=render 'posts/new',post: @post %>
 </div>
 </div>
 </div>

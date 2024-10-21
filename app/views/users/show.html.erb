@@ -1,8 +1,37 @@
-<%=@user.name %>
-<%=@user.introduction %>
+<div class="container">
+<div class="row">
+ <div class="col-md-5">
+<h1 class="mt-3"><i class="fa-solid fa-user-pen"></i></h1>
+<p><%=@user.name %>
 <%=image_tag @user.get_profile_image(50,50) %>
-<% @posts.each do |post| %>
-<%=post.name %>
-<%=post.caption %>
-<%=image_tag post.get_image(50,50) %>
+<span id="wcount">follow:<%=link_to @user.followings.count,user_followings_path(@user) %></span>
+<span id="wercount">follower:<%=link_to @user.followers.count,user_followers_path(@user) %></span></p>
+<p><%=@user.introduction %></p>
+<% if @user==current_user %>
+<p><%=link_to edit_user_path(@user),class: "btn btn-outline-secondary" do %>
+<i class="fa-solid fa-user-gear"></i>
 <% end %>
+<% else %>
+<p id="follow<%=@user.id%>">
+  <%=render "relationships/relationship",user: @user %></p>
+<% end %>
+
+</p>
+</div>
+</div>
+<div class="row">
+<% @posts.each do |post| %>
+<div class="col-md-2">
+<div class="card h-100">
+  <div class="card-header"><i class="fa-solid fa-utensils"></i> <%=post.name %></div>
+<%=image_tag post.get_image(100,100),class: "card-image-top" %>
+<div class="card-text">
+<p id="favorite<%=post.id %>"><%=render "favorites/favorite",post: post %></p>
+<%=post.caption %>
+</div>
+</div>
+</div>
+<% end %>
+
+</div>
+</div>

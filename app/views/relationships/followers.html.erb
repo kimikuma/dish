@@ -1,0 +1,19 @@
+<div class="container">
+<div class="row">
+<div class="col-md-5">
+<table class="table table-border-bottom">
+<tr>
+  <th>name</th>
+  <th>image</th>
+</tr>
+
+<% @users.each do |f| %>
+<tr>
+<td><%=user.name %></td>
+<td><%=image_tag user.get_profile_image(50,50) %></td>
+</tr>
+<% end %>
+</table>
+</div>
+</div>
+</div>
