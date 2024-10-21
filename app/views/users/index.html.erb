@@ -1,0 +1,5 @@
+<% @users.each do |user| %>
+<%=user.name %>
+<%=user.introduction %>
+<%=image_tag user.get_profile_image(50,50) %>
+<% end %>
