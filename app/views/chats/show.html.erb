@@ -1,0 +1,21 @@
+<h2><%=@user.name %>さんとのchat</h2>
+<div class="message" style="width:400px;">
+  <% @chats.each do |chat| %>
+  <% if chat.user_id==current_user.id %>
+  <%=render "chats/chat",chat: chat %>
+  <% else %>
+  <div class="left-container d-flex">
+    <%=image_tag @user.get_profile_image(30,30),style: "border-radius:50%" %>
+    <p id="chat_<%=chat.id %>" style="background-color:#F5F5DC; padding:5px; border-radius:10px;">
+      <%=chat.message %>
+    </p>
+  </div>
+  <% end %>
+  <% end %>
+</div>
+
+<%=form_with model:@chat,local: false do |f| %>
+<%=f.text_field:message %>
+<p><%=f.submit "送信",class: "btn btn-dark btn-sm" %></p>
+<%=f.hidden_field:room_id %>
+<% end %>
