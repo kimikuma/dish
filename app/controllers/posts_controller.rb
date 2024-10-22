@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 
 
   def index
-    @posts=Post.all
+    @posts=Post.all.page(params[:page]).per(7)
     @post=Post.new
 
   end
@@ -20,6 +20,7 @@ class PostsController < ApplicationController
   def show
     @post=Post.find(params[:id])
     @comment=Comment.new
+    @post.increment!(:view_count)
   end
 
   def edit

@@ -27,7 +27,7 @@ before_action:block_non_related_users,only: [:show]
     @chat=current_user.chats.new(chat_params)
     @chat.save
     #redirect_to request.referer
-  end
+   end
 
   def destroy
     @chat=current_user.chats.find(params[:id])

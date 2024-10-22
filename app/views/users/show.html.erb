@@ -33,7 +33,7 @@
   </div>
 <%=image_tag post.get_image(100,100),class: "card-image-top" %>
 <div class="card-text">
-<p id="favorite<%=post.id %>"><%=render "favorites/favorite",post: post %>
+<p><span id="favorite<%=post.id %>"><%=render "favorites/favorite",post: post %></span>
 <i class="fa-regular fa-pen-to-square"></i><span class="count"><%=post.comments.count %></span></p>
 <%=post.caption %>
 </div>
