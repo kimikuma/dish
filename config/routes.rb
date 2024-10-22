@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   root "homes#top"
   resources :users do
     resource :relationships
-    get "followings"=>"relationships/followings",as: "followings"
-    get "followers"=>"relationships/followers",as: "followers"
+    get "followings"=>"relationships#followings",as: "followings"
+    get "followers"=>"relationships#followers",as: "followers"
   end
   resources :posts do
     resource :favorites
+    resources :comments
 
   end
 

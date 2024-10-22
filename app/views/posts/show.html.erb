@@ -15,10 +15,16 @@
 <tr>
   <th>image</th>
 <td><%=image_tag @post.get_image(100,100) %>
-<p id="favorite<%=@post.id %>"><%=render "favorites/favorite",post: @post %></p></td>
+<p id="favorite<%=@post.id %>"><%=render "favorites/favorite",post: @post %>
+<i class="fa-regular fa-pen-to-square"></i><span class="count"><%=@post.comments.count %></span></p></td>
 </tr>
 </table>
+<div id="comment<%=@post.id %>">
+<%=render "comments/comment",post: @post %>
 </div>
+<%=render "comments/form",comment: @comment,post: @post %>
+</div>
+
 <div class="col-md-4 offset-md-1">
   <h1><%=image_tag @post.user.get_profile_image(100,100) %>
   <%=@post.user.name %></h1>

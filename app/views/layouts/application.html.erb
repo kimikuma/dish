@@ -18,6 +18,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
       <ul class="navbar-nav">
+        <% if user_signed_in? %>
         <li class="nav-item">
           <%=link_to posts_path,class: "nav-link" do%>
           <i class="fa-solid fa-image"></i>
@@ -28,16 +29,16 @@
           <i class="fa-solid fa-right-from-bracket"></i>
           <% end %>
         </li>
-        <li class="nav-item dropdown">
-          <button class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </button>
-          <ul class="dropdown-menu dropdown-menu-light">
-            <li><a class="dropdown-item" href="users_path"><i class="fa-solid fa-users"></i></a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+        <li class="nav-item">
+          <%=link_to user_path(current_user),class: "nav-link" do %>
+            <i class="fa-solid fa-users"></i>
+            <% end %>
         </li>
+         <% else %>
+         <%=link_to root_path do %>
+         <i class="fa-solid fa-house"></i>
+         <% end %>
+         <% end %>
       </ul>
     </div>
   </div>

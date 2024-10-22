@@ -6,6 +6,10 @@ class User < ApplicationRecord
 
    has_many :posts,dependent: :destroy
    has_many :favorites,dependent: :destroy
+   has_many :comments,dependent: :destroy
+   has_many :user_rooms,dependent: :destroy
+   has_many :rooms,through: :user_rooms
+   has_many :chats,dependent: :destroy
 
    has_many :relationships,class_name: "Relationship",foreign_key: :follower_id,dependent: :destroy
    has_many :followings,through: :relationships,source: :followed
@@ -16,6 +20,7 @@ class User < ApplicationRecord
    validates :name,presence: true
 
    has_one_attached:profile_image
+
 
    def follow(user)
     relationships.create(followed_id:user.id)

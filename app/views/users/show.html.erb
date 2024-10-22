@@ -23,10 +23,15 @@
 <% @posts.each do |post| %>
 <div class="col-md-2">
 <div class="card h-100">
-  <div class="card-header"><i class="fa-solid fa-utensils"></i> <%=post.name %></div>
+  <div class="card-header"><i class="fa-solid fa-utensils"></i> <%=post.name %>
+  <% if post.user==current_user %>
+  <%=link_to "削除",post_path(post),method: :delete,class: "btn btn-danger btn-sm ms-2" %>
+  <% end %>
+  </div>
 <%=image_tag post.get_image(100,100),class: "card-image-top" %>
 <div class="card-text">
-<p id="favorite<%=post.id %>"><%=render "favorites/favorite",post: post %></p>
+<p id="favorite<%=post.id %>"><%=render "favorites/favorite",post: post %>
+<i class="fa-regular fa-pen-to-square"></i><span class="count"><%=post.comments.count %></span></p>
 <%=post.caption %>
 </div>
 </div>

@@ -7,9 +7,9 @@
   <th>image</th>
 </tr>
 
-<% @users.each do |f| %>
+<% @users.each do |user| %>
 <tr>
-<td><%=user.name %></td>
+<td><%=link_to user.name,user_path(user) %></td>
 <td><%=image_tag user.get_profile_image(50,50) %></td>
 </tr>
 <% end %>

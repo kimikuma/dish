@@ -12,7 +12,8 @@
 <td class="mx-3"><%=link_to post.name,post_path(post)%></td>
 <td class="mx-3"><%=post.caption %></td>
 <td class="mx-3"><%=image_tag post.get_image(50,50) %>
-<p id="favorite<%=post.id %>"><%=render "favorites/favorite",post: post %></p></td>
+<p id="favorite<%=post.id %>"><%=render "favorites/favorite",post: post %>
+<i class="fa-regular fa-pen-to-square"></i><span class="count"><%=post.comments.count %></span></p></td>
 
 </tr>
 <% end %>
