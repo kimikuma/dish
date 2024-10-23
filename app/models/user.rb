@@ -44,4 +44,16 @@ class User < ApplicationRecord
      profile_image.variant(resize_to_limit: [width,height]).processed
    end
 
+  def self.search_for(search,word)
+    if search=="perfect"
+      User.where(name: word)
+    elsif search=="forward"
+      User.where("name LIKE?",word+"%")
+    elsif search=="backward"
+      User.where("name LIKE?","%"+word)
+    else search=="partial"
+      User.where("name LIKE?","%"+word+"%")
+    end
+  end
+
 end
